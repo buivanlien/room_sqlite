@@ -34,11 +34,15 @@ import org.vonad.roomsqlitesample.model.TableTwoModel;
  * This is the backend. The database. This used to be done by the OpenHelper.
  * The fact that this has very few comments emphasizes its coolness.
  */
-
+/*
+*     TableTwoModel.class,
+                      TableThreeModel.class,
+                      TableFourModel.class*/
 @Database(entities = {TableFirstModel.class,
                       TableTwoModel.class,
                       TableThreeModel.class,
-                      TableFourModel.class}, version = 6)
+                      TableFourModel.class
+}, version = 6)
 // list entities = { Repo.class, User.class } add more class you must create dao, and version upgrade
 abstract class MyRoomDatabase
         extends RoomDatabase {
@@ -60,56 +64,54 @@ abstract class MyRoomDatabase
                                    .addMigrations(new Migration(1,
                                                                 2) {
                                        @Override
-                                       public void migrate(@NonNull
-                                                           final SupportSQLiteDatabase database) {
-                                           database.execSQL("ALTER TABLE " + TableFirstModel.class.getAnnotation(Entity.class)
-                                                                                                  .tableName()
+                                       public void migrate(
+                                               @NonNull final SupportSQLiteDatabase database) {
+                                           database.execSQL("ALTER TABLE " + "table_one"
                                                                     + " ADD COLUMN last_update TEXT");
                                        }
                                    })
                                    .addMigrations(new Migration(2,
                                                                 3) {
                                        @Override
-                                       public void migrate(@NonNull
-                                                           final SupportSQLiteDatabase database) {
-                                           database.execSQL("ALTER TABLE " + TableFirstModel.class.getAnnotation(Entity.class)
-                                                                                                  .tableName()
+                                       public void migrate(
+                                               @NonNull final SupportSQLiteDatabase database) {
+                                           database.execSQL("ALTER TABLE " + "table_one"
                                                                     + " ADD COLUMN description TEXT");
                                        }
                                    })
                                    .addMigrations(new Migration(3,
                                                                 4) {
                                        @Override
-                                       public void migrate(@NonNull
-                                                           final SupportSQLiteDatabase database) {
+                                       public void migrate(
+                                               @NonNull final SupportSQLiteDatabase database) {
                                            database.execSQL(
                                                    "CREATE TABLE " +
-                                                           TableTwoModel.class.getAnnotation(Entity.class)
-                                                                              .tableName() + " (name TEXT NOT NULL,"
+                                                           "table_two"
+                                                           + " (name TEXT NOT NULL,"
                                                            + " PRIMARY KEY(name))");
                                        }
                                    })
                                    .addMigrations(new Migration(4,
                                                                 5) {
                                        @Override
-                                       public void migrate(@NonNull
-                                                           final SupportSQLiteDatabase database) {
+                                       public void migrate(
+                                               @NonNull final SupportSQLiteDatabase database) {
                                            database.execSQL(
                                                    "CREATE TABLE " +
-                                                           TableThreeModel.class.getAnnotation(Entity.class)
-                                                                                .tableName() + " (name TEXT NOT NULL,"
+                                                           "table_three"
+                                                           + " (name TEXT NOT NULL,"
                                                            + " PRIMARY KEY(name))");
                                        }
                                    })
                                    .addMigrations(new Migration(5,
                                                                 6) {
                                        @Override
-                                       public void migrate(@NonNull
-                                                           final SupportSQLiteDatabase database) {
+                                       public void migrate(
+                                               @NonNull final SupportSQLiteDatabase database) {
                                            database.execSQL(
                                                    "CREATE TABLE " +
-                                                           TableFourModel.class.getAnnotation(Entity.class)
-                                                                               .tableName() + " (name TEXT NOT NULL,"
+                                                           "table_four"
+                                                           + " (name TEXT NOT NULL,"
                                                            + " PRIMARY KEY(name))");
                                        }
                                    })

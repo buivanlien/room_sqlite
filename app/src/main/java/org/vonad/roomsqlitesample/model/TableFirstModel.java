@@ -75,4 +75,9 @@ public class TableFirstModel {
         this.lastUpdate = lastUpdate;
         this.description = description;
     }
+//    public TableFirstModel(@NonNull final String nameFirst,
+//                           final String description) {
+//        this.nameFirst = nameFirst;
+//        this.description = description;
+//    }
 }
